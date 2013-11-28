@@ -10,20 +10,25 @@ function orientationChange(){
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ DEVICE READY */
 function onDeviceReady() {
-	
 	orientationChange();
 	
-	FB.init({
-		appId: '1438325273053701',
-		nativeInterface: CDV.FB,
-		status     : true, // check login status
-		//cookie     : true, // enable cookies to allow the server to access the session
-		// xfbml: true,
-		useCachedDialogs: false
+	$(".btnLoginFB").swipe({
+		tap:function(event, target) {
+			FB.login(function(response){
+				fbcon = response;
+				FB.getLoginStatus(function(response1) {
+					if (response1.status === 'connected') {
+						showAlert('ESTA LOGUEADO EN FACEBOOK');			
+					} else if (response1.status === 'not_authorized') {
+						showAlert('ESTA LOGUEADO EN FACEBOOK SIN PERMISOS');
+					} else {				
+						showAlert('NO ESTA LOGUEADO EN FACEBOOK');			
+					}
+				}, true);			
+			},{scope: 'email'});
+		},
+		excludedElements:"button, input, select, textarea, .noSwipe"
 	});
-	FB.Event.subscribe('auth.statusChange', handleStatusChange);
-	FB.getLoginStatus(handleStatusChange);
-	
 	
 	
 	

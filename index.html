@@ -22,9 +22,7 @@
 	
 </head>
 <body>
-	<div id="fb-root"></div>
-	
-	
+	<div class="btnLoginFB">LOGIN FACEBOOK</div>
 	<div class="section secTop">
 		<div id="facebookUser-pic"></div>
 		<div id="facebookUser-name"></div>
@@ -43,6 +41,48 @@
 		</div>
 	</div>
 	
-	
+	<div id="fb-root"></div>
+	<script type="text/javascript">
+		var loadSDKfacebook = false;
+		window.fbAsyncInit = function() {
+			loadSDKfacebook = true;
+			FB.init({
+				appId: '1438325273053701',
+				nativeInterface: CDV.FB,
+				status : true,
+				//cookie : true,
+				//xfbml : true,
+				//frictionlessRequests : true,
+				useCachedDialogs: false
+			});
+			
+	   		//FB.Canvas.setAutoGrow();
+			//FB.Canvas.setSize({ height: 630 });
+		};
+		
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/"+fbApp.appJSLang+"/all.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		
+		/*
+		FB.init({
+			appId: '1438325273053701',
+			nativeInterface: CDV.FB,
+			status     : true, // check login status
+			//cookie     : true, // enable cookies to allow the server to access the session
+			// xfbml: true,
+			useCachedDialogs: false
+		});
+		FB.Event.subscribe('auth.statusChange', handleStatusChange);
+		FB.getLoginStatus(handleStatusChange);
+		*/
+		
+		
+		
+	</script>
 </body>
 </html>
