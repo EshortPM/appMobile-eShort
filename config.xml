@@ -111,6 +111,11 @@
     
     <access origin="http://e-short.com" subdomains="true" />
     <access origin="e-short.com" subdomains="true" />
+    <access origin="https://m.facebook.com" />
+  	<access origin="https://graph.facebook.com" />
+  	<access origin="https://api.facebook.com" />
+  	<access origin="https://*.fbcdn.net" />
+  	<access origin="https://*.akamaihd.net" />
     
     <access origin="*" />
 
