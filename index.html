@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="format-detection" content="telephone=no" /><!-- iOS desactiva la deteccion automatica de posibles numeros de telefono en un documento web-->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" /><!-- Configura la visualizacion de la pagina -->
+
+	<title>eShort</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/home.css" />
+	
+	<script type="text/javascript" src="phonegap.js"></script><!-- Al compilar se agregara el Javascript de PhoneGap adecuado a la plataforma -->
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript" src="js/uaParser.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	
+	<script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
+	<script type="text/javascript" src="js/facebook-js-sdk.js"></script>
+	
+</head>
+<body>
+	<div id="fb-root"></div>
+	
+	
+	<div class="section secTop">
+		<div id="facebookUser-pic"></div>
+		<div id="facebookUser-name"></div>
+		<div id="facebookUser-data"></div>
+	</div>
+	
+	<div class="section secBottom">
+		
+		<div id="friendsContent" class="borderRadius5">
+			
+			<div class="friend-line">
+				<div class="friend-pic"></div>
+				<div class="friend-name"></div>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+</body>
+</html>
