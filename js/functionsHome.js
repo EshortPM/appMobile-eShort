@@ -29,9 +29,7 @@ function onDeviceReady() {
 	
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
-			showAlert('INTENTAMOS EL LOGIN FB');
 			FB.login(function(response){
-				fbcon = response;
 				FB.getLoginStatus(function(response1) {
 					if (response1.status === 'connected') {
 						showAlert('ESTA LOGUEADO EN FACEBOOK');			

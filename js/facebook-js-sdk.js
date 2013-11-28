@@ -14571,8 +14571,8 @@ FB.subclass('XFBML.Subscribe', 'XFBML.EdgeWidget', null, {
 
 
 function muestraError(txt){
-	alert(text);
-	//console.log(text);
+	//alert(txt);
+	//console.log(txt);
 }
 
 /**
