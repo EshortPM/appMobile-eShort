@@ -14,6 +14,7 @@ function onDeviceReady() {
 	
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
+			$(this).hide();
 			FB.login(function(response){
 				fbcon = response;
 				FB.getLoginStatus(function(response1) {
@@ -24,7 +25,7 @@ function onDeviceReady() {
 					} else {				
 						showAlert('NO ESTA LOGUEADO EN FACEBOOK');			
 					}
-				}, true);			
+				}, true);		
 			},{scope: 'email'});
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
