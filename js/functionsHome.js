@@ -12,9 +12,24 @@ function orientationChange(){
 function onDeviceReady() {
 	orientationChange();
 	
+	FB.init({
+		appId: '1438325273053701',
+		nativeInterface: CDV.FB,
+		status : true,
+		//cookie : true,
+		//xfbml : true,
+		//frictionlessRequests : true,
+		useCachedDialogs: false
+	});
+	
+	FB.Event.subscribe('auth.statusChange', handleStatusChange);
+	FB.getLoginStatus(handleStatusChange);
+	
+	
+	
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
-			$(this).hide();
+			showAlert('INTENTAMOS EL LOGIN FB');
 			FB.login(function(response){
 				fbcon = response;
 				FB.getLoginStatus(function(response1) {
