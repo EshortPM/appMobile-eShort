@@ -48,10 +48,15 @@ function onDeviceReady() {
 	});
 	
 	
-	/*
+	
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
 			FB.login(function(response){
+				
+				showAlert(JSON.stringify(response));
+				
+				
+				/*
 				FB.getLoginStatus(function(response1) {
 					if (response1.status === 'connected') {
 						showAlert('ESTA REGISTRADO EN LA APP');
@@ -63,12 +68,13 @@ function onDeviceReady() {
 						showAlert('NO ESTA LOGUEADO EN FACEBOOK');
 						$(".btnLoginFB").show();			
 					}
-				}, true);		
+				}, true);
+				*/	
 			},{scope: 'email'});
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
 	});
-	*/
+	
 	
 	
 	
