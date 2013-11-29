@@ -30,8 +30,11 @@ function onDeviceReady() {
 	FB.getLoginStatus(function(response){		
 		//showAlert('FB.getLoginStatus\n\n'+JSON.stringify(response));
 		if (response.status == 'connected'){
-			//esta logueado con la app de facebook
-			showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response.authResponse.userId+'\n\n'+response.authResponse.userID);
+			//showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response.authResponse.userId+'\n\n'+response.authResponse.userID);
+			getUserFacebook(function(data){
+				user.fbdata = data;
+				showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+			});
 		}else{
 			showAlert('NO ESTA CONECTADO CON LA APP DE FACEBOOK');
 		}
@@ -43,18 +46,10 @@ function onDeviceReady() {
 		tap:function(event, target) {
 			FB.login(function(response){
 				//showAlert('FB.login\n\n'+JSON.stringify(response));
-				FB.getLoginStatus(function(response1){		
-					//showAlert('FB.getLoginStatus\n\n'+JSON.stringify(response1));
-					if (response1.status == 'connected'){
-						//esta logueado con la app de facebook
-						showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response1.authResponse.userId+'\n\n'+response1.authResponse.userID);
-					}else{
-						showAlert('NO ESTA CONECTADO CON LA APP DE FACEBOOK');
-					}
-				});
-				
-			
-					
+				getUserFacebook(function(data){
+					user.fbdata = data;
+					showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+				});	
 			},{scope: 'email'});
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
@@ -66,3 +61,5 @@ function onDeviceReady() {
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ DEVICE READY */
 function showAlert(text){navigator.notification.alert(text,null,nombreApp,txt_btn_aceptar);}
+function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionretorno(me);});}
+
