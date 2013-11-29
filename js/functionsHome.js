@@ -24,6 +24,10 @@ function onDeviceReady() {
 	
 	/*FB.Event.subscribe('auth.statusChange', handleStatusChange);*/
 	FB.getLoginStatus(function(response){
+		
+		showAlert(JSON.stringify(response));
+		/*
+		
 		if (response.authResponse) {
 			showAlert('ESTA LOGUEADO EN FACEBOOK');
 			if (response1.status === 'connected') {
@@ -40,10 +44,11 @@ function onDeviceReady() {
 			showAlert('NO ESTA LOGUEADO EN FACEBOOK');
 			$(".btnLoginFB").show();
 		}
+		*/
 	});
 	
 	
-	
+	/*
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
 			FB.login(function(response){
@@ -63,6 +68,7 @@ function onDeviceReady() {
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
 	});
+	*/
 	
 	
 	
