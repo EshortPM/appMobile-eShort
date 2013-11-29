@@ -35,8 +35,12 @@ function onDeviceReady() {
 				if (!data.error){
 					user.fbdata = data;
 					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
-					$(".btnLoginFB").hide();
-					composePage();
+					getFriendsFacebook(function(){
+						
+						
+						$(".btnLoginFB").hide();
+						composePage();
+					});
 				}
 			});
 		}else{
@@ -51,11 +55,17 @@ function onDeviceReady() {
 			FB.login(function(response){
 				//showAlert('FB.login\n\n'+JSON.stringify(response));
 				getUserFacebook(function(data){
-					user.fbdata = data;
-					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
-					$(".btnLoginFB").hide();
-					composePage();
-				});	
+					if (!data.error){
+						user.fbdata = data;
+						//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+						getFriendsFacebook(function(){
+							
+							
+							$(".btnLoginFB").hide();
+							composePage();
+						});
+					}
+				});
 			},{scope: 'email'});
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
@@ -69,6 +79,43 @@ function onDeviceReady() {
 function showAlert(text){navigator.notification.alert(text,null,nombreApp,txt_btn_aceptar);}
 function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionretorno(me);});}
 
+function getFriendsFacebook(functionretorno){
+	
+	//FB.api('/me/friends?fields=id,name,gender,locale', function(friends) {
+	FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(friends) {
+		var friendCount = friends.data.length;
+		user.fbdata.friends = friends;
+		user.fbdata.total_friends = friendCount;
+		funcionretorno();
+	});	
+	
+	/*
+	FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(response) {
+		if (response.error) {
+			alert(JSON.stringify(response.error));
+		} else {
+			var data = document.getElementById('data');
+			fdata=response.data;
+			console.log("fdata: "+fdata);
+			response.data.forEach(function(item) {
+				var d = document.createElement('div');
+				d.innerHTML = "<img src="+item.picture+"/>"+item.name;
+				data.appendChild(d);
+			});
+		}
+		var friends = response.data;
+		console.log(friends.length); 
+		for (var k = 0; k < friends.length && k < 200; k++) {
+			var friend = friends[k];
+			var index = 1;
+			
+			friendIDs[k] = friend.id;
+			//friendsInfo[k] = friend;
+		}
+		console.log("friendId's: "+friendIDs);
+	});
+	*/
+}
 
 function composePage(){
 	$("#facebookUser-pic").css({
@@ -84,6 +131,19 @@ function composePage(){
 	htmlUser += 'Gender: '+user.fbdata.gender+'<br/>';
 	htmlUser += 'Locale: '+user.fbdata.locale;
 	$("#facebookUser-data").html(htmlUser);
+	
+	//amigos
+	for(var i=0; i<user.fbdata.total_friends; i++) {
+		var friendId = user.fbdata.friends.data[i].id;
+		var friendNombre = user.fbdata.friends.data[i].name;
+		var friendGender = user.fbdata.friends.data[i].gender;
+		var html_amigo = '';
+		html_amigo += '<div class="friend-line">';
+			html_amigo += '<div class="friend-pic" style="background-image:url(https://graph.facebook.com/'+friendId+'/picture); background-size:100% 100%;"></div>';
+			html_amigo += '<div class="friend-name">'+friendNombre+'</div>';
+		html_amigo += '</div>';
+		$("#friendsContent").append(html_amigo);
+	}
 	
 }
 
