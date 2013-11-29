@@ -22,32 +22,21 @@ function onDeviceReady() {
 		useCachedDialogs: false
 	});
 	
-	/*FB.Event.subscribe('auth.statusChange', handleStatusChange);*/
-	FB.Event.subscribe('auth.login', function(response) {
-    	showAlert('FB.Event.subscribe\n\n'+JSON.stringify(response));
-	});
-	FB.getLoginStatus(function(response){
-		
+	//FB.Event.subscribe('auth.statusChange', function(response){showAlert('FB.Event.subscribe -> auth.statusChange\n\n'+JSON.stringify(response));});
+	//FB.Event.subscribe('auth.login', function(response){showAlert('FB.Event.subscribe -> auth.login\n\n'+JSON.stringify(response));});
+	//FB.Event.subscribe('auth.logout', function(response){showAlert('FB.Event.subscribe -> auth.logout\n\n'+JSON.stringify(response));});
+	//FB.Event.subscribe('auth.sessionChange', function(response){showAlert('FB.Event.subscribe -> auth.sessionChange\n\n'+JSON.stringify(response));});
+	
+	FB.getLoginStatus(function(response){		
 		showAlert('FB.getLoginStatus\n\n'+JSON.stringify(response));
-		/*
-		
-		if (response.authResponse) {
-			showAlert('ESTA LOGUEADO EN FACEBOOK');
-			if (response1.status === 'connected') {
-				showAlert('ESTA REGISTRADO EN LA APP');
-				$(".btnLoginFB").hide();	
-			} else if (response1.status === 'not_authorized') {
-				showAlert('NO HA DADO LOS PERMISOS');
-				$(".btnLoginFB").show();
-			} else {				
-				showAlert('NO ESTA LOGUEADO EN FACEBOOK');
-				$(".btnLoginFB").show();		
-			}
-		} else {
-			showAlert('NO ESTA LOGUEADO EN FACEBOOK');
-			$(".btnLoginFB").show();
+		if (response.status == 'connected'){
+			//esta logueado con la app de facebook
+			showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response.userID);
+			
+			
+		}else{
+			showAlert('NO ESTA CONECTADO EN LA APP DE FACEBOOK');
 		}
-		*/
 	});
 	
 	
@@ -55,24 +44,11 @@ function onDeviceReady() {
 	$(".btnLoginFB").swipe({
 		tap:function(event, target) {
 			FB.login(function(response){
-				
 				showAlert('FB.login\n\n'+JSON.stringify(response));
 				
 				
-				/*
-				FB.getLoginStatus(function(response1) {
-					if (response1.status === 'connected') {
-						showAlert('ESTA REGISTRADO EN LA APP');
-						$(".btnLoginFB").hide();			
-					} else if (response1.status === 'not_authorized') {
-						showAlert('NO HA DADO LOS PERMISOS');
-						$(".btnLoginFB").show();
-					} else {				
-						showAlert('NO ESTA LOGUEADO EN FACEBOOK');
-						$(".btnLoginFB").show();			
-					}
-				}, true);
-				*/	
+			
+					
 			},{scope: 'email'});
 		},
 		excludedElements:"button, input, select, textarea, .noSwipe"
