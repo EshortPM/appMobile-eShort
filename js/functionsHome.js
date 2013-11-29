@@ -35,6 +35,7 @@ function onDeviceReady() {
 				if (!data.error){
 					user.fbdata = data;
 					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+					$(".btnLoginFB").hide();
 					composePage();
 				}
 			});
@@ -52,6 +53,7 @@ function onDeviceReady() {
 				getUserFacebook(function(data){
 					user.fbdata = data;
 					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+					$(".btnLoginFB").hide();
 					composePage();
 				});	
 			},{scope: 'email'});
