@@ -23,9 +23,12 @@ function onDeviceReady() {
 	});
 	
 	/*FB.Event.subscribe('auth.statusChange', handleStatusChange);*/
+	FB.Event.subscribe('auth.login', function(response) {
+    	showAlert('FB.Event.subscribe\n\n'+JSON.stringify(response));
+	});
 	FB.getLoginStatus(function(response){
 		
-		showAlert(JSON.stringify(response));
+		showAlert('FB.getLoginStatus\n\n'+JSON.stringify(response));
 		/*
 		
 		if (response.authResponse) {
@@ -53,7 +56,7 @@ function onDeviceReady() {
 		tap:function(event, target) {
 			FB.login(function(response){
 				
-				showAlert(JSON.stringify(response));
+				showAlert('FB.login\n\n'+JSON.stringify(response));
 				
 				
 				/*
