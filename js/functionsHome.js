@@ -79,10 +79,9 @@ function onDeviceReady() {
 function showAlert(text){navigator.notification.alert(text,null,nombreApp,txt_btn_aceptar);}
 function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionretorno(me);});}
 
-function getFriendsFacebook(functionretorno){
-	
-	FB.api('/me/friends?fields=id,name,gender,locale', function(friends) {
-	//FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(friends) {
+function getFriendsFacebook(funcionretorno){
+	//FB.api('/me/friends?fields=id,name,gender,locale', function(friends) {
+	FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(friends) {
 		var friendCount = friends.data.length;
 		user.fbdata.friends = friends;
 		user.fbdata.total_friends = friendCount;
