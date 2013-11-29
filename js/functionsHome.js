@@ -32,8 +32,11 @@ function onDeviceReady() {
 		if (response.status == 'connected'){
 			//showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response.authResponse.userId+'\n\n'+response.authResponse.userID);
 			getUserFacebook(function(data){
-				user.fbdata = data;
-				showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+				if (!data.error){
+					user.fbdata = data;
+					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+					composePage();
+				}
 			});
 		}else{
 			showAlert('NO ESTA CONECTADO CON LA APP DE FACEBOOK');
@@ -48,7 +51,8 @@ function onDeviceReady() {
 				//showAlert('FB.login\n\n'+JSON.stringify(response));
 				getUserFacebook(function(data){
 					user.fbdata = data;
-					showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
+					composePage();
 				});	
 			},{scope: 'email'});
 		},
@@ -62,4 +66,21 @@ function onDeviceReady() {
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ DEVICE READY */
 function showAlert(text){navigator.notification.alert(text,null,nombreApp,txt_btn_aceptar);}
 function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionretorno(me);});}
+
+
+function composePage(){
+	$("#facebookUser-pic").css({
+		'background-image':'url(https://graph.facebook.com/'+user.fbdata.id+'/picture)'
+		'background-size':'100% 100%'
+	});
+	$("#facebookUser-name").html(user.fbdata.name);
+	var htmlUser = '';
+	htmlUser += 'ID: '+user.fbdata.id+'<br/>';
+	htmlUser += 'First Name: '+user.fbdata.first_name+'<br/>';
+	htmlUser += 'Last Name: '+user.fbdata.last_name+'<br/>';
+	htmlUser += 'Email: '+user.fbdata.email+'<br/>';
+	htmlUser += 'Gender: '+user.fbdata.gender+'<br/>';
+	htmlUser += 'Locale: '+user.fbdata.locale;
+	$("#facebookUser-data").html(htmlUser);
+}
 
