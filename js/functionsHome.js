@@ -72,7 +72,7 @@ function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionreto
 
 function composePage(){
 	$("#facebookUser-pic").css({
-		'background-image':'url(https://graph.facebook.com/'+user.fbdata.id+'/picture)'
+		'background-image':'url(https://graph.facebook.com/'+user.fbdata.id+'/picture)',
 		'background-size':'100% 100%'
 	});
 	$("#facebookUser-name").html(user.fbdata.name);
@@ -84,5 +84,6 @@ function composePage(){
 	htmlUser += 'Gender: '+user.fbdata.gender+'<br/>';
 	htmlUser += 'Locale: '+user.fbdata.locale;
 	$("#facebookUser-data").html(htmlUser);
+	
 }
 
