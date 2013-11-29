@@ -81,8 +81,8 @@ function getUserFacebook(funcionretorno){FB.api('/me', function(me) {funcionreto
 
 function getFriendsFacebook(functionretorno){
 	
-	//FB.api('/me/friends?fields=id,name,gender,locale', function(friends) {
-	FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(friends) {
+	FB.api('/me/friends?fields=id,name,gender,locale', function(friends) {
+	//FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(friends) {
 		var friendCount = friends.data.length;
 		user.fbdata.friends = friends;
 		user.fbdata.total_friends = friendCount;
