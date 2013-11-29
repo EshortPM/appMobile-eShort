@@ -31,8 +31,7 @@ function onDeviceReady() {
 		showAlert('FB.getLoginStatus\n\n'+JSON.stringify(response));
 		if (response.status == 'connected'){
 			//esta logueado con la app de facebook
-			showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+JSON.stringify(response.authResponse));
-			
+			showAlert('CONECTADO EN LA APP DE FACEBOOK\n\n'+response.authResponse.userId);
 			
 		}else{
 			showAlert('NO ESTA CONECTADO EN LA APP DE FACEBOOK');
