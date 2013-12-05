@@ -2,7 +2,7 @@
 <widget id = "com.eshort" version = "1.0.0" xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0">
     
     <name>eShort</name>
-    <description>eShort Application</description>
+    <description>eShort App</description>
     <author href="http://e-short.com" email="admin@shortcut-emarketing.com">eShort</author>
         
     <content src="index.html" />

@@ -86,34 +86,7 @@ function getFriendsFacebook(funcionretorno){
 		user.fbdata.friends = friends;
 		user.fbdata.total_friends = friendCount;
 		funcionretorno();
-	});	
-	
-	/*
-	FB.api('/me/friends', { fields: 'id, name, gender, locale' },  function(response) {
-		if (response.error) {
-			alert(JSON.stringify(response.error));
-		} else {
-			var data = document.getElementById('data');
-			fdata=response.data;
-			console.log("fdata: "+fdata);
-			response.data.forEach(function(item) {
-				var d = document.createElement('div');
-				d.innerHTML = "<img src="+item.picture+"/>"+item.name;
-				data.appendChild(d);
-			});
-		}
-		var friends = response.data;
-		console.log(friends.length); 
-		for (var k = 0; k < friends.length && k < 200; k++) {
-			var friend = friends[k];
-			var index = 1;
-			
-			friendIDs[k] = friend.id;
-			//friendsInfo[k] = friend;
-		}
-		console.log("friendId's: "+friendIDs);
 	});
-	*/
 }
 
 function composePage(){
@@ -143,6 +116,29 @@ function composePage(){
 		html_amigo += '</div>';
 		$("#friendsContent").append(html_amigo);
 	}
-	
 }
 
+
+function sendInvitations(ids, cantidad){
+	FB.ui({method: 'apprequests',
+    	message: message_notifications,
+    	title: title_notifications,
+    	to: ids
+  	}, function(data){
+  		/*
+		if (data && data.to) {
+			
+			var contador_envios_not = 0;
+			var array_envios_ids = [];
+			$.each(data.to, function(cont, value){
+			
+			});
+			
+		}else{			
+			
+			
+			
+		}
+		*/
+	});
+}
