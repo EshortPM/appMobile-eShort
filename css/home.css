@@ -91,7 +91,7 @@ html,body{
 	text-align:center;
 	font-size:1.3em;
 	background-color:red;
-	display:none;
+	display:block;
 }
 
 .section{
@@ -101,8 +101,8 @@ html,body{
 	overflow:hidden;
 }
 
-.secTop{height:40%; display:block;}
-.secBottom{height:60%;display:block;}
+.secTop{height:40%; display:none;}
+.secBottom{height:60%;display:none;}
 
 #friendsContent{
 	position:absolute;
