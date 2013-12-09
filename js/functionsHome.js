@@ -113,24 +113,25 @@ function composePage(){
 		$("#friendsContent").append(html_amigo);
 	}
 	if (user.fbdata.total_friends > 0){
+		
 		$(".friend-line").swipe({
-		tap:function(event, target) {
-			var idFriend = $(this).attr('id');
-			//var nid = idFriend.substr(7,(idFriend.length-7));
-			var estadoFriend = $("#"+idFriend+"_send").val();
-			switch (estadoFriend){
-				case (0) :
-					$("#"+idFriend).css('background-color','red');
-					$("#"+idFriend+"_send").val(1);
-				break;
-				case (1) :
-					$("#"+idFriend).css('background-color','white');
-					$("#"+idFriend+"_send").val(0);
-				break;
-			}
-		},
-		excludedElements:"button, input, select, textarea, .noSwipe"
-	});
+			tap:function(event, target) {
+				var idFriend = target.id;
+				alert(idFriend);
+				var estadoFriend = $("#"+idFriend+"_send").val();
+				switch (estadoFriend){
+					case (0) :
+						$("#"+idFriend).css('background-color','red');
+						$("#"+idFriend+"_send").val(1);
+					break;
+					case (1) :
+						$("#"+idFriend).css('background-color','white');
+						$("#"+idFriend+"_send").val(0);
+					break;
+				}
+			},
+			excludedElements:"button, input, select, textarea, .noSwipe"
+		});
 		
 		
 	}
