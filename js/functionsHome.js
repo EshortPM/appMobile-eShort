@@ -36,8 +36,6 @@ function onDeviceReady() {
 					user.fbdata = data;
 					//showAlert('USER\n\n'+JSON.stringify(user.fbdata));
 					getFriendsFacebook(function(){
-						
-						
 						$(".btnLoginFB").hide();
 						composePage();
 					});
@@ -90,10 +88,7 @@ function getFriendsFacebook(funcionretorno){
 }
 
 function composePage(){
-	$("#facebookUser-pic").css({
-		'background-image':'url(https://graph.facebook.com/'+user.fbdata.id+'/picture)',
-		'background-size':'100% 100%'
-	});
+	$("#facebookUser-pic").append('<img src="https://graph.facebook.com/'+user.fbdata.id+'/picture">');
 	$("#facebookUser-name").html(user.fbdata.name);
 	var htmlUser = '';
 	htmlUser += 'ID: '+user.fbdata.id+'<br/>';
@@ -102,8 +97,8 @@ function composePage(){
 	htmlUser += 'Email: '+user.fbdata.email+'<br/>';
 	htmlUser += 'Gender: '+user.fbdata.gender+'<br/>';
 	htmlUser += 'Locale: '+user.fbdata.locale;
-	$("#facebookUser-data").html(htmlUser);
-	
+	//$("#facebookUser-data").html(htmlUser);
+	$(".secTop, .secBottom").show();
 	//amigos
 	for(var i=0; i<user.fbdata.total_friends; i++) {
 		var friendId = user.fbdata.friends.data[i].id;

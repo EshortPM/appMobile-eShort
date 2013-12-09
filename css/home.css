@@ -84,11 +84,14 @@ html,body{
 
 .btnLoginFB{
 	position:fixed;
-	top:0px;
-	left:0px;
-	width:100%;
+	top:5%;
+	width:70%;
+	margin-left:13%;
+	padding:2%;
 	text-align:center;
-	font-size:3em;
+	font-size:1.3em;
+	background-color:red;
+	display:none;
 }
 
 .section{
@@ -98,8 +101,8 @@ html,body{
 	overflow:hidden;
 }
 
-.secTop{height:40%;}
-.secBottom{height:60%;}
+.secTop{height:40%; display:block;}
+.secBottom{height:60%;display:block;}
 
 #friendsContent{
 	position:absolute;
@@ -138,26 +141,33 @@ html,body{
 #facebookUser-pic{
 	position:relative;
 	float:left;
-	width:50px;
-	height:50px;
-	margin:2%;
+	width:50%;
+	margin-left:25%;
+	margin-right:25%;
+	display:block;
+	overflow:hidden;
 }
 
 #facebookUser-name{
 	position:relative;
 	float:left;
 	margin-top:2%;
-	width:70%;
+	width:100%;
+	margin-left:0px;
 }
 
-#facebookUser-data{
+#facebookUser-post{
 	position:relative;
 	float:left;
-	width:96%;
-	margin:2%;
+	margin-top:2%;
+	width:70%;
+	margin-left:13%;
+	padding:2%;
+	font-size:1.2em;
+	color:#fff;
+	background-color:#1A693A;
+	text-align:center;
 }
-
-
 
 @media all and (orientation: landscape) {
 	.section{width:50%;}
