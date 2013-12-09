@@ -105,12 +105,37 @@ function composePage(){
 		var friendNombre = user.fbdata.friends.data[i].name;
 		var friendGender = user.fbdata.friends.data[i].gender;
 		var html_amigo = '';
-		html_amigo += '<div class="friend-line">';
+		html_amigo += '<div class="friend-line" id="friend_'+i+'">';
+			html_amigo += '<input type="hidden" id="friend_'+i+'_send" value="0"/>';
 			html_amigo += '<div class="friend-pic"><img src="https://graph.facebook.com/'+friendId+'/picture?width=200&height=200" style="width:100%;"></div>';
 			html_amigo += '<div class="friend-name">'+friendNombre+'</div>';
 		html_amigo += '</div>';
 		$("#friendsContent").append(html_amigo);
 	}
+	if (user.fbdata.total_friends > 0){
+		$(".friend-line").swipe({
+		tap:function(event, target) {
+			var idFriend = $(this).attr('id');
+			//var nid = idFriend.substr(7,(idFriend.length-7));
+			var estadoFriend = $("#"+idFriend+"_send").val();
+			switch (estadoFriend){
+				case (0) :
+					$("#"+idFriend).css('background-color','red');
+					$("#"+idFriend+"_send").val(1);
+				break;
+				case (1) :
+					$("#"+idFriend).css('background-color','white');
+					$("#"+idFriend+"_send").val(0);
+				break;
+			}
+		},
+		excludedElements:"button, input, select, textarea, .noSwipe"
+	});
+		
+		
+	}
+	
+	
 }
 
 
