@@ -88,7 +88,7 @@ function getFriendsFacebook(funcionretorno){
 }
 
 function composePage(){
-	$("#facebookUser-pic").append('<img src="https://graph.facebook.com/'+user.fbdata.id+'/picture">');
+	$("#facebookUser-pic").append('<img src="https://graph.facebook.com/'+user.fbdata.id+'/picture?width=200&height=200" style="width:100%;">');
 	$("#facebookUser-name").html(user.fbdata.name);
 	var htmlUser = '';
 	htmlUser += 'ID: '+user.fbdata.id+'<br/>';
@@ -106,7 +106,7 @@ function composePage(){
 		var friendGender = user.fbdata.friends.data[i].gender;
 		var html_amigo = '';
 		html_amigo += '<div class="friend-line">';
-			html_amigo += '<div class="friend-pic" style="background-image:url(https://graph.facebook.com/'+friendId+'/picture); background-size:100% 100%;"></div>';
+			html_amigo += '<div class="friend-pic"><img src="https://graph.facebook.com/'+friendId+'/picture?width=200&height=200" style="width:100%;"></div>';
 			html_amigo += '<div class="friend-name">'+friendNombre+'</div>';
 		html_amigo += '</div>';
 		$("#friendsContent").append(html_amigo);
