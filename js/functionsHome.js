@@ -116,7 +116,7 @@ function composePage(){
 		
 		$(".friend-line").swipe({
 			tap:function(event, target) {
-				var idFriend = target.id;
+				var idFriend = $(this).attr('id');
 				alert(idFriend);
 				var estadoFriend = $("#"+idFriend+"_send").val();
 				switch (estadoFriend){
