@@ -121,8 +121,8 @@ html,body{
 	width:100%;
 	display:block;
 	overflow:hidden;
-	background-color:white;
 	border-bottom:1px solid #aaa;
+	background-color:white;
 	color:#000;
 	padding-bottom:1%;
 }

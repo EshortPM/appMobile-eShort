@@ -118,12 +118,11 @@ function composePage(){
 			tap:function(event, target) {
 				var idFriend = $(this).attr('id');
 				var estadoFriend = $("#"+idFriend+"_send").val();
-				alert('estado ACTUAL ->'+estadoFriend);
 				if (estadoFriend == 0){
-					$(this).css('background-color','red');
+					$(this).css({'background-color':'green','color':'#fff'});
 					$("#"+idFriend+"_send").val(1);
 				}else if(estadoFriend == 1){
-					$(this).css('background-color','white');
+					$(this).css({'background-color':'white','color':'#000'});
 					$("#"+idFriend+"_send").val(0);
 				}
 			},
