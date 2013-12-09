@@ -151,10 +151,7 @@ html,body{
 #facebookUser-pic{
 	position:relative;
 	float:left;
-	width:50%;
-	margin-top:10%;
-	margin-left:25%;
-	margin-right:25%;
+	width:30%;margin-top:5%;margin-left:35%;margin-right:35%;
 	display:block;
 	overflow:hidden;
 }
@@ -183,10 +180,5 @@ html,body{
 @media all and (orientation: landscape) {
 	.section{width:50%;}
 	.secTop, .secBottom{height:100%;}
-	
-	#facebookUser-pic{width:30%;margin-top:5%;margin-left:35%;margin-right:35%;}
-	
-	
-	
-	
+	#facebookUser-pic{width:50%;margin-top:10%;margin-left:25%;margin-right:25%;}
 }
