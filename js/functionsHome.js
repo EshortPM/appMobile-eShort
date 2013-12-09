@@ -116,18 +116,15 @@ function composePage(){
 		
 		$(".friend-line").swipe({
 			tap:function(event, target) {
-				var idFriend = "#" + $(this).attr('id');
-				var idFriendSend = idFriend+"_send";
-				var estadoFriend = $(idFriendSend).val();
-				switch (estadoFriend){
-					case (0) :
-						$(idFriend).css('background-color','red');
-						$(idFriendSend).val(1);
-					break;
-					case (1) :
-						$(idFriend).css('background-color','white');
-						$(idFriendSend).val(0);
-					break;
+				var idFriend = $(this).attr('id');
+				var estadoFriend = $("#"+idFriend+"_send").val();
+				alert('estado ACTUAL ->'+estadoFriend);
+				if (estadoFriend == 0){
+					$(this).css('background-color','red');
+					$("#"+idFriend+"_send").val(1);
+				}else if(estadoFriend == 1){
+					$(this).css('background-color','white');
+					$("#"+idFriend+"_send").val(0);
 				}
 			},
 			excludedElements:"button, input, select, textarea, .noSwipe"
