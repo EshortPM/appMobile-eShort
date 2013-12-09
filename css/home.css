@@ -152,6 +152,7 @@ html,body{
 	position:relative;
 	float:left;
 	width:50%;
+	margin-top:10%;
 	margin-left:25%;
 	margin-right:25%;
 	display:block;
@@ -182,4 +183,10 @@ html,body{
 @media all and (orientation: landscape) {
 	.section{width:50%;}
 	.secTop, .secBottom{height:100%;}
+	
+	#facebookUser-pic{width:30%;margin-top:5%;margin-left:35%;margin-right:35%;}
+	
+	
+	
+	
 }
