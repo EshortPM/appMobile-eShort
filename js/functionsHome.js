@@ -116,17 +116,17 @@ function composePage(){
 		
 		$(".friend-line").swipe({
 			tap:function(event, target) {
-				var idFriend = $(this).attr('id');
-				alert(idFriend);
-				var estadoFriend = $("#"+idFriend+"_send").val();
+				var idFriend = "#" + $(this).attr('id');
+				var idFriendSend = idFriend+"_send";
+				var estadoFriend = $(idFriendSend).val();
 				switch (estadoFriend){
 					case (0) :
-						$("#"+idFriend).css('background-color','red');
-						$("#"+idFriend+"_send").val(1);
+						$(idFriend).css('background-color','red');
+						$(idFriendSend).val(1);
 					break;
 					case (1) :
-						$("#"+idFriend).css('background-color','white');
-						$("#"+idFriend+"_send").val(0);
+						$(idFriend).css('background-color','white');
+						$(idFriendSend).val(0);
 					break;
 				}
 			},
