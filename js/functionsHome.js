@@ -69,6 +69,33 @@ function onDeviceReady() {
 		excludedElements:"button, input, select, textarea, .noSwipe"
 	});
 	
+	$("#facebookUser-post").swipe({
+		tap:function(event, target) {
+			publishFacebookUser();
+		},
+		excludedElements:"button, input, select, textarea, .noSwipe"
+	});
+	
+	$("#btnSendNot").swipe({
+		tap:function(event, target) {
+			var totalSendInvitations = 0;
+			var IdsInvitations = '';
+			for(var i=0; i<user.fbdata.total_friends; i++) {
+				var estadoFriend = $("#friend_"+i+"_send").val();
+				if (estadoFriend == 1){
+					totalSendInvitations = totalSendInvitations+1;
+					IdsInvitations =  (IdsInvitations != '') ? IdsInvitations+','+user.fbdata.friends.data[i].id : IdsInvitations+user.fbdata.friends.data[i].id;
+				}
+			}
+			if (totalSendInvitations == 0){
+				alert('Debes seleccionar AMIGOS');
+			}else{
+				sendInvitations(IdsInvitations, totalSendInvitations);	
+			}
+			
+		},
+		excludedElements:"button, input, select, textarea, .noSwipe"
+	});
 	
 	
 	
@@ -135,6 +162,24 @@ function composePage(){
 	
 }
 
+function publishFacebookUser(){
+	var obj = {
+		method: 'feed',
+        //redirect_uri: 'YOUR URL HERE',
+        link: fbApp.dirRaiz, //link post
+        picture: fbApp.pagePicture, //image post
+        name: facebook_post_name, //title post
+        caption: facebook_post_caption, //subtitle post
+        description: facebook_post_description //description post
+	};
+	FB.ui(obj, function(response){		
+		if (!response || response.error) {
+			//ERROR
+		} else {
+			//OK
+		}
+	});
+}
 
 function sendInvitations(ids, cantidad){
 	FB.ui({method: 'apprequests',
