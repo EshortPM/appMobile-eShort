@@ -84,13 +84,13 @@ html,body{
 
 .btnLoginFB{
 	position:fixed;
-	top:5%;
+	top:30%;
 	width:70%;
-	margin-left:13%;
-	padding:2%;
+	margin-left:11%;
+	padding:4%;
 	text-align:center;
 	font-size:1.3em;
-	background-color:red;
+	background-color:blue;
 	display:block;
 }
 
@@ -105,14 +105,29 @@ html,body{
 .secBottom{height:60%;display:none;}
 
 #friendsContent{
-	position:absolute;
+	position:relative;
+	float:left;
 	width:90%;
-	height:90%;
+	height:70%;
 	margin-top:5%;
 	margin-left:5%;
 	border: 1px solid #fff;
 	overflow-x:hidden;
 	overflow-y:auto;
+}
+
+#btnSendNot{
+	position:relative;
+	float:left;
+	padding:2%;
+	font-size:1.1em;
+	text-align:center;
+	width:80%;
+	margin-left:9%;
+	color:#fff;
+	background-color:blue;
+	margin-top:1%;
+	
 }
 
 .friend-line{
